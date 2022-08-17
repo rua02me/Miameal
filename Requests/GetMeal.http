@@ -1,0 +1,3 @@
+@id = fc8e5bc6-f0a2-46e6-863a-4652129cb612
+
+GET  http://localhost:5115/miameals/{{id}}

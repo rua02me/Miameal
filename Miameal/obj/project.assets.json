@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Miameal.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Miameal.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Miameal.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Miameal.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Miameal.Contracts/Miameal.Contracts.csproj",
+      "msbuildProject": "../Miameal.Contracts/Miameal.Contracts.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Miameal.Contracts >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/apple/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/apple/Miameal/Miameal/Miameal.csproj",
+      "projectName": "Miameal",
+      "projectPath": "/Users/apple/Miameal/Miameal/Miameal.csproj",
+      "packagesPath": "/Users/apple/.nuget/packages/",
+      "outputPath": "/Users/apple/Miameal/Miameal/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/apple/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "/Users/apple/Miameal/Miameal.Contracts/Miameal.Contracts.csproj": {
+              "projectPath": "/Users/apple/Miameal/Miameal.Contracts/Miameal.Contracts.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.300/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

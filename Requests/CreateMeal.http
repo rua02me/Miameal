@@ -1,0 +1,22 @@
+POST  http://localhost:5115/miameals
+Content-Type: application/json
+
+{
+    "name": "CAn chicken",
+    "descriptions": "mia loves it!",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "savory": [
+        "Oatmeal",
+        "Avocado Toast",
+        "Omelette",
+        "Salad"
+    ],
+    "Sweet": [
+        "Cookie"
+    ]
+}
+
+###
+
+GET https://localhost:7197/miameals/fa88a92f-599e-44b4-a301-1f074ad6a81c

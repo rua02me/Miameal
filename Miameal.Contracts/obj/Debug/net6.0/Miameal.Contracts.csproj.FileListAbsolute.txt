@@ -1,0 +1,12 @@
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.csproj.AssemblyReference.cache
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.AssemblyInfoInputs.cache
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.AssemblyInfo.cs
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.csproj.CoreCompileInputs.cache
+/Users/apple/Miameal/Miameal.Contracts/bin/Debug/net6.0/Miameal.Contracts.deps.json
+/Users/apple/Miameal/Miameal.Contracts/bin/Debug/net6.0/Miameal.Contracts.dll
+/Users/apple/Miameal/Miameal.Contracts/bin/Debug/net6.0/Miameal.Contracts.pdb
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.dll
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/refint/Miameal.Contracts.dll
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/Miameal.Contracts.pdb
+/Users/apple/Miameal/Miameal.Contracts/obj/Debug/net6.0/ref/Miameal.Contracts.dll
