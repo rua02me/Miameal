@@ -1,19 +1,18 @@
-POST  http://localhost:5115/miameals
+POST  http://localhost:5115/meals
 Content-Type: application/json
 
 {
-    "name": "CAn chicken",
+    "name": "BIg beef",
     "descriptions": "mia loves it!",
-    "startDateTime": "2022-04-08T08:00:00",
-    "endDateTime": "2022-04-08T11:00:00",
+    "startDateTime": "2022-08-17",
+    "endDateTime": "2022-08-17",
     "savory": [
-        "Oatmeal",
-        "Avocado Toast",
+        "Beef",
         "Omelette",
         "Salad"
     ],
     "Sweet": [
-        "Cookie"
+        "wow"
     ]
 }
 

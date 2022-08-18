@@ -4,8 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 {
 // Add services to the container.
-builder.Services.AddControllers();
-builder.Services.AddScoped<IMealService, MealService>();
+    builder.Services.AddControllers();
+    builder.Services.AddScoped<IMealService, MealService>();
 }
 
 var app = builder.Build();
