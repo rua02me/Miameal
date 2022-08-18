@@ -1,61 +1,80 @@
-using Microsoft.AspNetCore.Mvc;
 using Miameal.Contracts.Meal;
 using Miameal.Models;
+using Miameal.ServiceErrors;
 using Miameal.Services.Meals;
+using ErrorOr;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Miameal.Controllers;
 
-[ApiController]
-[Route("/miameals")]
-
-public class MealController : ControllerBase 
+public class MealsController : ApiController
 {
     private readonly IMealService _mealService;
 
-    public MealController(IMealService mealService)
+    public MealsController(IMealService mealService)
     {
         _mealService = mealService;
     }
 
-    [HttpPost()]
+    [HttpPost]
     public IActionResult CreateMeal(CreateMealRequest request)
     {
-        var meal = new Meal(
-            Guid.NewGuid(),
-            request.Name,
-            request.Descriptions,
-            request.StartDateTime,
-            request.EndDateTime,
-            DateTime.UtcNow,
-            request.Savory,
-            request.Sweet
-        );
+        ErrorOr<Meal> requestToMealResult = Meal.From(request);
 
-        _mealService.CreateMeal(meal);
+        if (requestToMealResult.IsError)
+        {
+            return Problem(requestToMealResult.Errors);
+        }
 
-        var response = new MealResponse(
-            meal.Id,
-            meal.Name,
-            meal.Descriptions,
-            meal.StartDateTime,
-            meal.EndDateTime,
-            meal.LastModifiedDateTime,
-            meal.Savory,
-            meal.Sweet
-        );
+        var meal = requestToMealResult.Value;
+        ErrorOr<Created> createMealResult = _mealService.CreateMeal(meal);
 
-        return CreatedAtAction(
-            actionName: nameof(GetMeal),
-            new { id = meal.Id},
-            value : response);
+        return createMealResult.Match(
+            created => CreatedAtGetMeal(meal),
+            errors => Problem(errors));
     }
 
     [HttpGet("{id:guid}")]
     public IActionResult GetMeal(Guid id)
     {
-        Meal meal = _mealService.GetMeal(id);
+        ErrorOr<Meal> getMealResult = _mealService.GetMeal(id);
 
-        var response = new MealResponse(
+        return getMealResult.Match(
+            meal => Ok(MapMealResponse(meal)),
+            errors => Problem(errors));
+    }
+
+    [HttpPut("{id:guid}")]
+    public IActionResult UpsertMeal(Guid id, UpsertMealRequest request)
+    {
+        ErrorOr<Meal> requestToMealResult = Meal.From(id, request);
+
+        if (requestToMealResult.IsError)
+        {
+            return Problem(requestToMealResult.Errors);
+        }
+
+        var meal = requestToMealResult.Value;
+        ErrorOr<UpsertedMeal> upsertMealResult = _mealService.UpsertMeal(meal);
+
+        return upsertMealResult.Match(
+            upserted => upserted.IsNewlyCreated ? CreatedAtGetMeal(meal) : NoContent(),
+            errors => Problem(errors));
+    }
+
+    [HttpDelete("{id:guid}")]
+    public IActionResult DeleteMeal(Guid id)
+    {
+        ErrorOr<Deleted> deleteMealResult = _mealService.DeleteMeal(id);
+
+        return deleteMealResult.Match(
+            deleted => NoContent(),
+            errors => Problem(errors));
+    }
+
+    private static MealResponse MapMealResponse(Meal meal)
+    {
+        return new MealResponse(
             meal.Id,
             meal.Name,
             meal.Descriptions,
@@ -64,19 +83,13 @@ public class MealController : ControllerBase
             meal.LastModifiedDateTime,
             meal.Savory,
             meal.Sweet);
-
-        return Ok(response);
     }
 
-    [HttpPut("{id:guid}")]
-    public IActionResult UpsterMeal(Guid id, UpsterMealRequest request)
+    private CreatedAtActionResult CreatedAtGetMeal(Meal meal)
     {
-        return Ok(request);
-    }
-
-    [HttpDelete("{id:guid}")]
-    public IActionResult DeleteMeal(Guid id)
-    {
-        return Ok(id);
+        return CreatedAtAction(
+            actionName: nameof(GetMeal),
+            routeValues: new { id = meal.Id },
+            value: MapMealResponse(meal));
     }
 }

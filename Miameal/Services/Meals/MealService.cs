@@ -1,18 +1,41 @@
 using Miameal.Models;
+using Miameal.ServiceErrors;
+using ErrorOr;
 
 namespace Miameal.Services.Meals;
 
 public class MealService : IMealService
 {
-    private readonly Dictionary<Guid, Meal> _meals = new();
+    private static readonly Dictionary<Guid, Meal> _meals = new();
 
-    public void CreateMeal(Meal meal)
+    public ErrorOr<Created> CreateMeal(Meal meal)
     {
         _meals.Add(meal.Id, meal);
+        return Result.Created;
     }
 
-    public Meal GetMeal(Guid id)
+    public ErrorOr<Deleted> DeleteMeal(Guid id)
     {
-        return _meals[id];
+        _meals.Remove(id);
+        return Result.Deleted;
     }
+
+    public ErrorOr<Meal> GetMeal(Guid id)
+    {
+        if (_meals.TryGetValue(id, out var meal))
+        {
+            return meal;
+        }
+
+        return Errors.Meal.NotFound;
+    }
+
+    public ErrorOr<UpsertedMeal>  UpsertMeal(Meal meal)
+    {
+        var isNewlyCreated = !_meals.ContainsKey(meal.Id);
+        _meals[meal.Id] = meal;
+
+        return new UpsertedMeal(isNewlyCreated); 
+    }
+    
 }

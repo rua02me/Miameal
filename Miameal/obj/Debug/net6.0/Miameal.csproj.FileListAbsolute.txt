@@ -22,3 +22,4 @@
 /Users/apple/Miameal/Miameal/obj/Debug/net6.0/Miameal.pdb
 /Users/apple/Miameal/Miameal/obj/Debug/net6.0/Miameal.genruntimeconfig.cache
 /Users/apple/Miameal/Miameal/obj/Debug/net6.0/ref/Miameal.dll
+/Users/apple/Miameal/Miameal/bin/Debug/net6.0/ErrorOr.dll

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tLYcM3db92lWDtxGEiZINvVrahrNpQQVMc5Wnvv0hqOtJcS9bOT/e2hGaBu+0+ZQmhiuOreL8wPNQswv3RKKuQ==",
+  "dgSpecHash": "knWw+m4FSw/9KKy1RcBfKRYuGHxO5xxbw+4mwlhkE6GDpFGoxuzI5dH3K4saZc+dmICl6WRADhJFaCdN8AfZ1A==",
   "success": true,
   "projectFilePath": "/Users/apple/Miameal/Miameal/Miameal.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/apple/.nuget/packages/erroror/1.0.0/erroror.1.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

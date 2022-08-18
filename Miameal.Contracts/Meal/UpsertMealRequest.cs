@@ -1,6 +1,6 @@
 namespace Miameal.Contracts.Meal;
 
-public record UpsterMealRequest(
+public record UpsertMealRequest(
     string Name,
     string Descriptions,
     DateTime StartDateTime,

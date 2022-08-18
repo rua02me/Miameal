@@ -1,10 +1,12 @@
 using Miameal.Models;
+using ErrorOr;
 
 namespace Miameal.Services.Meals;
 
 public interface IMealService
 {
-    void CreateMeal(Meal meal);
-
-    Meal GetMeal(Guid id);
+    ErrorOr<Created> CreateMeal(Meal meal);
+    ErrorOr<UpsertedMeal> UpsertMeal(Meal meal);
+    ErrorOr<Meal> GetMeal(Guid id);
+    ErrorOr<Deleted> DeleteMeal(Guid id);
 }

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "ErrorOr/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ErrorOr.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/ErrorOr.dll": {}
+        }
+      },
       "Miameal.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -15,6 +24,20 @@
     }
   },
   "libraries": {
+    "ErrorOr/1.0.0": {
+      "sha512": "ebUnOo0kV+KWzEHGG/7nbSZXsGQQaG6fvrvAV62Zx75GoXz3YAbMNeirJORzvAdYynNssk77aATo3NLrjgzCKQ==",
+      "type": "package",
+      "path": "erroror/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "erroror.1.0.0.nupkg.sha512",
+        "erroror.nuspec",
+        "icon-square.png",
+        "lib/net6.0/ErrorOr.dll",
+        "lib/net6.0/ErrorOr.xml"
+      ]
+    },
     "Miameal.Contracts/1.0.0": {
       "type": "project",
       "path": "../Miameal.Contracts/Miameal.Contracts.csproj",
@@ -23,6 +46,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ErrorOr >= 1.0.0",
       "Miameal.Contracts >= 1.0.0"
     ]
   },
@@ -66,6 +90,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "ErrorOr": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
